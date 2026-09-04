@@ -1,0 +1,21 @@
+Configutation:
+  name: Default
+
+  Appenders:
+    Console:
+      name: Console_Appender
+      target: SYSTEM_OUT
+      PatternLayout:
+        Pattern: "%style{%d{yyyy-mm-dd HH:mm:ss.SSS}}{Dim} %highlight{%-5level} %style{--- [%15.15t]}{Dim} %cyan{%-40.40logger{}} : %msg%n%throwable"
+
+  Loggers:
+    Root:
+      level: info
+      AppenderRef:
+        ref: Console_Appender
+    Logger:
+      name: "eu.orchestrator"
+      level: info
+      additivity: false
+      AppenderRef:
+        ref: Console_Appender

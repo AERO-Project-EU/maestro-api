@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>eu.orchestrator</groupId>
+    <artifactId>orchestrator</artifactId>
+    <version>1.6.0.RELEASE</version>
+  </parent>
+
+  <artifactId>backend</artifactId>
+  <version>1.6.3.RELEASE</version>
+
+  <properties>
+    <junitparams.version>1.1.1</junitparams.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>eu.orchestrator</groupId>
+      <artifactId>common</artifactId>
+      <version>1.6.0.RELEASE</version>
+    </dependency>
+
+    <dependency>
+      <groupId>eu.orchestrator</groupId>
+      <artifactId>document-repository</artifactId>
+      <version>1.6.0.RELEASE</version>
+    </dependency>
+
+    <dependency>
+      <groupId>eu.orchestrator</groupId>
+      <artifactId>repository</artifactId>
+      <version>1.6.0.RELEASE</version>
+    </dependency>
+
+    <dependency>
+      <groupId>eu.orchestrator</groupId>
+      <artifactId>metric</artifactId>
+      <version>1.6.0.RELEASE</version>
+    </dependency>
+
+    <dependency>
+      <groupId>eu.orchestrator</groupId>
+      <artifactId>elasticity</artifactId>
+      <version>1.6.0.RELEASE</version>
+    </dependency>
+
+    <dependency>
+      <groupId>eu.orchestrator.elasticity-framework</groupId>
+      <artifactId>elasticity-framework-spi</artifactId>
+      <version>1.6.0.RELEASE</version>
+    </dependency>
+
+    <dependency>
+      <groupId>eu.orchestrator.elasticity-framework.elasticity-framework-adapter</groupId>
+      <artifactId>traefik-load-balancer</artifactId>
+      <version>1.6.0.RELEASE</version>
+    </dependency>
+
+    <dependency>
+      <groupId>eu.orchestrator.elasticity-framework.elasticity-framework-adapter</groupId>
+      <artifactId>traefik-lambda-proxy</artifactId>
+      <version>1.6.0.RELEASE</version>
+    </dependency>
+
+    <!-- Transfer -->
+    <dependency>
+      <groupId>eu.orchestrator</groupId>
+      <artifactId>transfer</artifactId>
+      <version>1.6.0.RELEASE</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <version>${spring.boot.version}</version>
+      <optional>true</optional>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-websocket</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+
+    <!-- Hibernate Validator: no longer bundled with spring-boot-starter-web since Boot 2.3 -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-validation</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.kafka</groupId>
+      <artifactId>spring-kafka</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.thymeleaf.extras</groupId>
+      <artifactId>thymeleaf-extras-springsecurity6</artifactId>
+    </dependency>
+
+    <!-- MySQL Connector -->
+    <dependency>
+      <groupId>com.mysql</groupId>
+      <artifactId>mysql-connector-j</artifactId>
+    </dependency>
+
+    <!-- JSON -->
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+    </dependency>
+
+    <!-- JWT library-->
+    <dependency>
+      <groupId>com.nimbusds</groupId>
+      <artifactId>nimbus-jose-jwt</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>net.minidev</groupId>
+      <artifactId>json-smart</artifactId>
+    </dependency>
+
+    <!-- Query DSL -->
+    <dependency>
+      <groupId>io.github.openfeign.querydsl</groupId>
+      <artifactId>querydsl-apt</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>io.github.openfeign.querydsl</groupId>
+      <artifactId>querydsl-jpa</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+    </dependency>
+
+    <!-- Jakarta Mail (Angus) -->
+    <dependency>
+      <groupId>org.eclipse.angus</groupId>
+      <artifactId>angus-mail</artifactId>
+    </dependency>
+
+    <!-- Legacy javax.xml.bind API (removed from the JDK in Java 11): needed by the transitive
+         jackson-module-jaxb-annotations that Hibernate 6 auto-registers. Coexists with jakarta.xml.bind. -->
+    <dependency>
+      <groupId>javax.xml.bind</groupId>
+      <artifactId>jaxb-api</artifactId>
+      <version>2.3.1</version>
+    </dependency>
+
+    <!-- Testing -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-test</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>pl.pragmatists</groupId>
+      <artifactId>JUnitParams</artifactId>
+      <version>${junitparams.version}</version>
+    </dependency>
+
+    <!-- Swagger (springdoc 2.x for Spring Boot 3) -->
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+      <version>2.8.17</version>
+    </dependency>
+
+    <!-- Docker -->
+    <dependency>
+      <groupId>com.github.docker-java</groupId>
+      <artifactId>docker-java</artifactId>
+    </dependency>
+
+    <!-- rabbitmq for spring -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-amqp</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.amqp</groupId>
+      <artifactId>spring-rabbit</artifactId>
+    </dependency>
+
+    <!-- kubernetes client  -->
+    <dependency>
+      <groupId>io.fabric8</groupId>
+      <artifactId>kubernetes-client</artifactId>
+    </dependency>
+
+    <!-- knative client -->
+    <dependency>
+      <groupId>io.fabric8</groupId>
+      <artifactId>knative-client</artifactId>
+      <version>${fabric8.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-jsr310</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.yaml</groupId>
+      <artifactId>snakeyaml</artifactId>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+
+      <!-- JAVA compatibility-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+      </plugin>
+      <!-- Enables mvn spring-boot:run -->
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <fork>true</fork>
+          <addResources>true</addResources>
+          <excludeDevtools>false</excludeDevtools>
+          <mainClass>eu.orchestrator.backend.Application</mainClass>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- Google Code style -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+      </plugin>
+
+    </plugins>
+  </build>
+</project>

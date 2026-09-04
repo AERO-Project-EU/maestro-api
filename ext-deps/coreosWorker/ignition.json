@@ -1,0 +1,31 @@
+{
+  "ignition": { "version": "2.1.0" },
+  "storage": {
+    "files": [{
+      "filesystem": "root",
+      "path": "/init/start.sh",
+      "mode": 777,
+      "contents": {
+        "source": "<url-of-your-start.sh>",
+        "verification": { }
+      }
+    }]
+  },
+  "systemd": {
+    "units": [{
+      "name": "start.service",
+      "enabled": true,
+      "contents": "[Service]\nType=simple\nExecStart=/bin/bash /init/start.sh\n\n[Install]\nWantedBy=multi-user.target"
+    }]
+  },
+  "passwd": {
+    "users": [
+      {
+        "name": "core",
+        "sshAuthorizedKeys": [
+          "<your-ssh-public-key>"
+        ]
+      }]
+  }
+}
+

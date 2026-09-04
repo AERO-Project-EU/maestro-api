@@ -1,0 +1,27 @@
+Node inventory (fill in with your own devices):
+
+<node-ip>	<sd-card-size>	<short-id>	<cjdns-ipv6>
+
+ssh pi@
+
+
+wget https://raw.githubusercontent.com/tomeshnet/prototype-cjdns-pi/master/scripts/install && chmod +x install && ./install
+!!! WARNING !!!
+install text user interface = N
+select node insttall type = Z
+name = presto
+install Yggdrasil routing engine = N
+install mesh point interface = Y 
+install ad-hoc interface = n
+install wifi access point = n
+install basic firewall = n
+install internet gateway over CJDNS = n
+install IPFS = n
+install SSB = n 
+install Yrd = n
+install prometheus node exporter = n
+install hyperboria domain name server = n
+install hyperboria network time protocol = n
+install non-essential tools useful for network analysis = n
+install hardware watchdog = n
+compile cjdns from source = Y

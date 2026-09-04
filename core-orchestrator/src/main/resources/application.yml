@@ -1,0 +1,89 @@
+server.port: 8090
+
+eu.project: ""
+
+#Consul Master url
+consul.url: ""
+consul.ipv6: ""
+consul.port: ""
+consul.ipv6Enabled: true
+
+#Virtualization Manager
+vim.url: localhost
+vim.port: 8070
+
+#Backend
+backend.url: 127.0.0.1
+backend.port: 8080
+
+#Kafka configuration
+kafka.url: ""
+kafka.port: 9092
+kafka.reportStatusTopic: ""
+kafka.backendRequest: ""
+kafka.policyEngineTopic: ""
+kafka.group: ""
+kafka.securityResults: ""
+kafka.socUrl: ""
+
+ubidell.image.id: ""
+ubidell.flavor.id: ""
+ubidell.network.id: ""
+ubidell.key.id: ""
+ubidell.nexus.ip: ""
+
+#dell maestro master
+relay.ipv4: ""
+relay.port: ""
+relay.login: ""
+relay.password: ""
+relay.publicKey: ""
+relay.peerName: ""
+relay.ipv6: ""
+relay.cluster: ""
+
+#Amazon IDs
+amazon.image.id: ""
+amazon.flavor.id: ""
+
+#Intrusition Detection System
+# Registry hosting the IDS image. Build it from ext-deps/snort and push it to a registry of your own.
+ids.registry: ""
+ids.image: ""
+ids.username: ""
+ids.password: ""
+# URL of the snort configuration archive (config.tar.gz); see ext-deps/snort for a template.
+ids.config.url: ""
+ids.config.username: ""
+ids.config.password: ""
+
+#Agent
+# URL the agent jar is downloaded from. Build the `agent` module and host the jar yourself.
+agent.url: ""
+agent.token: ""
+
+# Worker VMs
+# Password set for worker.username during provisioning. Empty means the image's own credentials are kept.
+worker.username: ubuntu
+worker.password: ""
+# Comma separated CIDRs routed via the private gateway on each worker, e.g. "10.0.0.0/24".
+network.additional.routes: ""
+# Init script installed as /etc/init.d/cjdns on each worker. Host your own copy.
+cjdns.init.script.url: ""
+
+nfs.server.ip:
+prometheus.url: ""
+monitoring.delay.enabled: true
+
+soc.manager.ip:
+soc.manager.port: 55000
+soc.manager.username:
+soc.manager.password:
+soc.manager.private.ip:
+soc.agent.url: ""
+soc.auditd.enabled: true
+
+# Logging
+# Shared secret used to sign/encrypt tokens. Must match the backend and the
+# virtualization-manager (token.signer.secret) and the agent (AGENT_ENCRYPTION_KEY).
+key.token: ${KEY_TOKEN:k9X#mP2vL8$qW4zN7bF1xD3fY6hJ5gC0}

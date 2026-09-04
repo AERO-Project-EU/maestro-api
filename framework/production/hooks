@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# change `unicorn` with project name
+# change also the the srv35 and add your user path
+TARGET="/home/srv35/unicorn"
+GIT_DIR="/home/srv35/unicorn.git"
+
+# change your deployed branch (`master` recommended)
+BRANCH="master"
+
+while read oldrev newrev ref
+do
+        # only checking out the master (or whatever branch you would like to deploy)
+        if [[ $ref = refs/heads/$BRANCH ]];
+        then
+                echo "Ref $ref received. Deploying ${BRANCH} branch to production..."
+                git --work-tree=$TARGET --git-dir=$GIT_DIR checkout -f $BRANCH
+
+                # ------- add automation deployment logic
+                # cd $TARGET
+                # mvn clean install
+                # ------- add automation deployment logic
+        else
+                echo "Ref $ref received. Doing nothing: only the ${BRANCH} branch may be deployed on remote server"
+        fi
+done

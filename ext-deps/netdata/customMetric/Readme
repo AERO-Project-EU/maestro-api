@@ -1,0 +1,8 @@
+Replace all the "customPlugin" with your own plugin name on the name of the python plugin, on the name of the configuration file as also inside the configuration file wherever is needed.
+Also, have in mind to replace the port number inside the configuration file.
+Last but not least, have in mind the following example about how to register a metric on the UI considering how you register it using the library.
+eg: 
+	Library registration: collector.registerMetric("agentExecution", "Agent Execution time", "milliseconds", "agent", "agent_profile_execution", ChartType.line);
+	UI registration: Name: _agent_profile_execution_milliseconds_average 
+					 Friendly Name: Agent Execution time
+					 Units: milliseconds

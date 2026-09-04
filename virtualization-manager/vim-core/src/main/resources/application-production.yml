@@ -1,0 +1,8 @@
+server.port: 8070
+
+# Golden Image ID used when spawning instances
+openstack.image.id: ${IMAGE_ID}
+
+# Shared secret used to sign/encrypt tokens. Must match the backend, the core-orchestrator
+# (key.token) and the agent (AGENT_ENCRYPTION_KEY).
+token.signer.secret: ${TOKEN_SIGNER_SECRET}

@@ -1,0 +1,10 @@
+                {
+                        "expr": "avg(netdata:@GRAPHID:@GRAPHINSTANCEID:@COMPONENT_netdata_net_kilobits_persec_average{chart=\"netdata.net\",dimension=\"out\"}) * (-1)",
+                        "format": "time_series",
+                        "hide": false,
+                        "instant": false,
+                        "interval": "",
+                        "intervalFactor": 1,
+                        "legendFormat": "@COMPONENT",
+                        "refId": "@ALFABETIC"
+                    }

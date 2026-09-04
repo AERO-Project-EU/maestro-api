@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# project name
+TARGET="/home/ubuntu/maestro"
+GIT_DIR="/home/ubuntu/maestro.git"
+
+# change your deployed branch (`master` recommended)
+BRANCH="framework"
+
+#DIRECTORY="/mnt/maestro/backup"
+#DATETIME=$(date "+%Y.%m.%d-%H.%M.%S")
+
+while read oldrev newrev ref
+do
+        # only checking out the master (or whatever branch you would like to deploy)
+        if [[ $ref = refs/heads/$BRANCH ]];
+        then
+                echo "Ref $ref received. Deploying ${BRANCH} branch to production..."
+                git --work-tree=$TARGET --git-dir=$GIT_DIR checkout -f $BRANCH
+
+                #---------------------------
+                #Build
+                #---------------------------
+                cd $TARGET
+                #mvn clean install
+
+                #---------------------------
+                #backup
+                #---------------------------
+                #docker exec maestro_database  mysqldump -u root -p"$DATABASE_ROOT_PASSWORD" --no-create-info orchestrator > $DIRECTORY/maestro_backup_$DATETIME.sql
+                #echo "$DIRECTORY/maestro_backup_$DATETIME.sql"
+
+        else
+                echo "Ref $ref received. Doing nothing: only the ${BRANCH} branch may be deployed on remote server"
+        fi
+done

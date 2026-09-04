@@ -1,0 +1,23 @@
+version: '3'
+services:
+  kafka:
+      container_name: "maestro-policy-engine-kafka-broker"
+      image: landoop/fast-data-dev:1.1.0
+      ports:
+        - "2181:2181"
+        - "3030:3030"
+        - "8081:8081"
+        - "8082:8082"
+        - "8083:8083"
+        - "9092:9092"
+        - "9093:9093"
+      environment:
+        - ADV_HOST=127.0.0.1
+
+#  rabbit:
+#      container_name: "maestro-policy-engine-rabbitmq-broker"
+#      image: rabbitmq:3-management
+#      environment:
+#        RABBITMQ_DEFAULT_VHOST: "/"
+#      ports:
+#        - 5672:5672

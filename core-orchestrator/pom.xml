@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>eu.orchestrator</groupId>
+    <artifactId>orchestrator</artifactId>
+    <version>1.6.0.RELEASE</version>
+  </parent>
+
+  <artifactId>core-orchestrator</artifactId>
+  <version>1.6.1.RELEASE</version>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>eu.orchestrator.virtualization-manager</groupId>
+      <artifactId>spi</artifactId>
+      <version>1.6.0.RELEASE</version>
+    </dependency>
+
+    <!-- transfer -->
+    <dependency>
+      <groupId>eu.orchestrator</groupId>
+      <artifactId>transfer</artifactId>
+      <version>1.6.0.RELEASE</version>
+    </dependency>
+
+    <dependency>
+      <groupId>eu.orchestrator.virtualization-manager.provider-adapter</groupId>
+      <artifactId>openstack</artifactId>
+      <version>1.6.0.RELEASE</version>
+    </dependency>
+
+    <dependency>
+      <groupId>eu.orchestrator</groupId>
+      <artifactId>collector</artifactId>
+      <type>jar</type>
+    </dependency>
+
+    <!--Elasticity Framework Adapters        -->
+    <dependency>
+      <groupId>eu.orchestrator.elasticity-framework</groupId>
+      <artifactId>elasticity-framework-spi</artifactId>
+      <version>1.6.0.RELEASE</version>
+      <scope>compile</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>eu.orchestrator</groupId>
+          <artifactId>repository</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>eu.orchestrator.elasticity-framework.elasticity-framework-adapter</groupId>
+      <artifactId>traefik-load-balancer</artifactId>
+      <version>1.6.0.RELEASE</version>
+      <scope>compile</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>eu.orchestrator</groupId>
+          <artifactId>repository</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>eu.orchestrator.elasticity-framework.elasticity-framework-adapter</groupId>
+      <artifactId>traefik-lambda-proxy</artifactId>
+      <version>1.6.0.RELEASE</version>
+      <scope>compile</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>eu.orchestrator</groupId>
+          <artifactId>repository</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-logging</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <!-- Logging -->
+    <!-- Add Log4j2 Dependency -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-log4j2</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.dataformat</groupId>
+      <artifactId>jackson-dataformat-yaml</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.ecwid.consul</groupId>
+      <artifactId>consul-api</artifactId>
+    </dependency>
+
+    <!-- JSON -->
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+    </dependency>
+
+    <!-- KAFKA -->
+    <dependency>
+      <groupId>org.apache.kafka</groupId>
+      <artifactId>kafka-clients</artifactId>
+    </dependency>
+
+    <!-- Testing -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <fork>true</fork>
+          <addResources>true</addResources>
+          <mainClass>eu.orchestator.core.Application</mainClass>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+      </plugin>
+
+    </plugins>
+  </build>
+</project>

@@ -1,0 +1,15 @@
+route:
+ group_by: ['alertname']
+ group_wait: 30s
+ group_interval: 10s
+ repeat_interval: 10s
+ receiver: policy-engine
+ routes:
+  - receiver: policy-engine
+    group_wait: 10s
+    match:
+        infra_grp: pse
+receivers:
+- name: 'policy-engine'
+  webhook_configs:
+  - url: 'http://localhost:8040/api/v1'

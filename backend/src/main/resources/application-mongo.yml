@@ -1,0 +1,12 @@
+# Opt-in MongoDB profile. Activate with: --spring.profiles.active=mongo
+# (or add "mongo" to a comma-separated profile list, e.g. "production,mongo").
+#
+# Re-enables Boot's Mongo client + template auto-configuration (only the repository
+# auto-config stays excluded, because MongoConfig provides @EnableMongoRepositories with
+# the correct base package). Connection settings come from spring.data.mongodb.* in application.yml.
+mongo:
+  enabled: true
+
+spring:
+  autoconfigure:
+    exclude: "org.springframework.boot.autoconfigure.data.mongo.MongoRepositoriesAutoConfiguration"

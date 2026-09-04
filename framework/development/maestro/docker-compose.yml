@@ -1,0 +1,288 @@
+version: '3'
+services:
+
+  ui-backend:
+    image: ${DOCKER_REPO}/ui-backend:1.6.0
+    environment:
+      DATABASE_URL: ${DATABASE_IP}
+      DATABASE_PORT: ${DATABASE_PORT}
+      UI_URL: ${BACKEND_IP}
+      UI_PORT: ${UI_PORT}
+      VIM_URL: ${VIM_IP}
+      VIM_PORT: ${VIM_PORT}
+      ORCHESTRATOR_URL: ${ORCHESTRATOR_IP}
+      ORCHESTRATOR_PORT: ${ORCHESTRATOR_PORT}
+      OSS_URL: ${OSS_IP}
+      OSS_PORT: ${OSS_PORT}
+      TAC_ENDPOINT: ${OSS_TAC_ENDPOINT}
+      CONSUL_URL: ${CONSUL_IP}
+      CONSUL_PORT: ${CONSUL_HTTP_PORT}
+      CONSUL_URL_IPV6: ${CONSUL_IPV6_BRACKETS}
+      POLICYENGINE_URL: ${POLICY_ENGINE_IP}
+      POLICYENGINE_PORT: ${POLICY_ENGINE_PORT}
+      KAFKA_URL: ${KAFKA_IP}
+      KAFKA_PORT: ${KAFKA_PORT}
+      EXPORTER_URL: ${METRIC_EXPORTER_IP}
+      EXPORTER_PORT: ${METRIC_EXPORTER_PORT}
+      PROMETHEUS_URL: ${PROMETHEUS_IP}
+      PROMETHEUS_PORT: ${PROMETHEUS_PORT}
+      ANALYTIC_ENGINE_URL: ${ANALYTIC_ENGINE_IP}
+      ANALYTIC_ENGINE_PORT: ${ANALYTIC_ENGINE_PORT}
+      ANALYTIC_SERVER_URL: ${ANALYTIC_SERVER_IP}
+      ANALYTIC_SERVER_PORT: ${ANALYTIC_SERVER_PORT}
+      ANALYTIC_SERVER_DOMAIN: ${ANALYTIC_SERVER_DOMAIN}
+      GRAFANA_URL: ${GRAFANA_IP}
+      GRAFANA_PORT: ${GRAFANA_PORT}
+      RABBIT_MQ_URL: ${RABBITMQ_IP}
+      RABBIT_MQ_PORT: ${RABBITMQ_PORT}
+      SOC_URL: ${SOC_IP}
+      SOC_KSQL_PORT: ${SOC_KSQL_PORT}
+      SOC_BROKER_PORT: ${SOC_BROKER_PORT}
+      PPDR_ENABLE: ${BACKEND_PPDR_ENABLE}
+      OLISTIC_ENABLE: ${BACKEND_OLISTIC_ENABLE}
+      TELCO_PROVIDER_ENABLE: ${BACKEND_TELCO_PROVIDER_ENABLE}
+      IOTGATEWAY_PROVIDER_ENABLE: ${BACKEND_IOTGATEWAY_PROVIDER_ENABLE}
+      AWS_PROVIDER_ENABLE: ${BACKEND_AWS_PROVIDER_ENABLE}
+      KUBERNETES_PROVIDER_ENABLE: ${BACKEND_KUBERNETES_PROVIDER_ENABLE}
+      DELL_PROVIDER_ENABLE: ${BACKEND_DELL_PROVIDER_ENABLE}
+      DELL_UNICORN_PROVIDER_ENABLE: ${BACKEND_DELL_UNICORN_PROVIDER_ENABLE}
+      DELL_MATILDA_PROVIDER_ENABLE: ${BACKEND_DELL_MATILDA_PROVIDER_ENABLE}
+      DELL_ASTRID_PROVIDER_ENABLE: ${BACKEND_DELL_ASTRID_PROVIDER_ENABLE}
+      DELL_SPIDER_PROVIDER_ENABLE: ${BACKEND_DELL_SPIDER_PROVIDER_ENABLE}
+      RAINBOW_KUBERNETES_PROVIDER_ENABLE: ${BACKEND_RAINBOW_KUBERNETES_PROVIDER_ENABLE}
+      TEST_PROVIDER_ENABLE: ${BACKEND_TEST_PROVIDER_ENABLE}
+      CONTAINER_NFS_PATH: ${BACKEND_CONTAINER_NFS_PATH}
+      MOUNTPOINT_ON_NFS_SERVER: ${BACKEND_MOUNTPOINT_ON_NFS_SERVER}
+      LINKS_SHOW_GRAFANA: ${LINKS_SHOW_GRAFANA}
+      LINKS_SHOW_PROMETHEUS: ${LINKS_SHOW_PROMETHEUS}
+      LINKS_SHOW_VULNERABILITIES: ${LINKS_SHOW_VULNERABILITIES}
+      LINKS_SHOW_KIBANA: ${LINKS_SHOW_KIBANA}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${BACKEND_CONTAINER_NFS_PATH}:/data
+    depends_on:
+      - landoop
+      - database
+      - policy-engine
+      - metric-exporter
+      - core-orchestrator
+      - virtualization-manager
+    ports:
+      - ${BACKEND_PORT}:8080
+    restart: always
+    network_mode: "host"
+
+  core-orchestrator:
+    image: ${DOCKER_REPO}/core-orchestrator:1.6.0
+    environment:
+      CONSUL_URL: ${CONSUL_IP}
+      CONSUL_PORT: ${CONSUL_HTTP_PORT}
+      CONSUL_IPV6: ${CONSUL_IPV6}
+      CONSUL_IPV6_ENABLED: ${ORCHESTRATOR_CONSUL_IPV6_ENABLED}
+      VIM_URL: ${VIM_IP}
+      VIM_PORT: ${VIM_PORT}
+      KAFKA_URL: ${KAFKA_IP}
+      KAFKA_PORT: ${KAFKA_PORT}
+      BACKEND_URL: ${BACKEND_IP}
+      BACKEND_PORT: ${BACKEND_PORT}
+      RELAY_IPV4: ${RELAY_IPV4}
+      RELAY_PORT: ${RELAY_PORT}
+      RELAY_PASSWORD: ${RELAY_PASSWORD}
+      RELAY_PUBLIC_KEY: ${RELAY_PUBLIC_KEY}
+      RELAY_IPV6: ${RELAY_IPV6}
+      RELAY_CLUSTER: ${RELAY_CLUSTER}
+      IDS_REGISTRY: ${IDS_REGISTRY}
+      IDS_IMAGE: ${IDS_IMAGE}
+      IDS_USERNAME: ${IDS_USERNAME}
+      IDS_PASSWORD: ${IDS_PASSWORD}
+      IDS_CONFIG_URL: ${IDS_CONFIG_URL}
+      IDS_CONFIG_USERNAME: ${IDS_CONFIG_USERNAME}
+      AGENT_URL: ${ORCHESTRATOR_AGENT_URL}
+      AGENT_TOKEN: ${ORCHESTRATOR_AGENT_TOKEN}
+      NFS_SERVER_IP: ${ORCHESTRATOR_NFS_SERVER_IP}
+      PROMETHEUS_URL: ${PROMETHEUS_IP}:${PROMETHEUS_PORT}
+      MONITORING_DELAY_ENABLED: ${ORCHESTRATOR_MONITORING_DELAY_ENABLED}
+      SOC_MANAGER_IP: ${SOC_MANAGER_IP}
+      SOC_MANAGER_PORT: ${SOC_MANAGER_PORT}
+      SOC_MANAGER_USERNAME: ${SOC_MANAGER_USERNAME}
+      SOC_MANAGER_PASSWORD: ${SOC_MANAGER_PASSWORD}
+      SOC_MANAGER_PRIVATE_IP: ${SOC_MANAGER_PRIVATE_IP}
+      SOC_AGENT_URL: ${SOC_AGENT_URL}
+      SOC_AUDITD_ENABLED: ${SOC_AUDITD_ENABLED}
+      KAFKA_SOC_URL: ${SOC_KAFKA_URL}
+      EU_PROJECT: ${PROJECT_NAME}
+
+    depends_on:
+      - consul
+      - landoop
+      - virtualization-manager
+    ports:
+      - "8090:8090"
+      - "38013:38013"
+    restart: always
+    network_mode: "host"
+
+  policy-engine:
+    image: ${DOCKER_REPO}/policy-engine:1.6.0
+    environment:
+      PROMETHEUS_URL: ${PROMETHEUS_IP}
+      PROMETHEUS_PORT: ${PROMETHEUS_PORT}
+      KAFKA_URL: ${KAFKA_IP}
+      KAFKA_PORT: ${KAFKA_PORT}
+      RABBITMQ_URL: ${RABBITMQ_IP}
+      RABBITMQ_PORT: ${RABBITMQ_PORT}
+    depends_on:
+      - landoop
+      - prometheus
+    volumes:
+      - ${PROMETHEUS_VOLUME_PATH}:/prometheus
+      - ${POLICY_ENGINE_HOST_RULES}:/rules
+    ports:
+      - ${POLICY_ENGINE_PORT}:8040
+    restart: always
+
+  virtualization-manager:
+    image: ${DOCKER_REPO}/virtualization-manager:1.6.0
+    environment:
+      IMAGE_ID: ${VIM_IMAGE_ID}
+    ports:
+      - ${VIM_PORT}:8070
+    restart: always
+    network_mode: "host"
+
+  metric-exporter:
+    image: ${DOCKER_REPO}/metric-exporter:1.6.0
+    environment:
+      CONSUL_URL: ${CONSUL_IP}
+      CONSUL_PORT: ${CONSUL_HTTP_PORT}
+      PROMETHEUS_URL: ${PROMETHEUS_IP}
+      PROMETHEUS_PORT: ${PROMETHEUS_PORT}
+      KAFKA_URL: ${KAFKA_IP}
+      KAFKA_PORT: ${KAFKA_PORT}
+      BACKEND_URL: ${BACKEND_IP}
+      BACKEND_PORT: ${BACKEND_PORT}
+      ENABLED_MONITORING: ${METRIC_EXPORTER_ENABLED_MONITORING}
+    depends_on:
+      - consul
+      - prometheus
+      - landoop
+    ports:
+      - ${METRIC_EXPORTER_PORT}:9080
+    restart: always
+
+  prometheus:
+    image: ${DOCKER_REPO}/prometheus:2.23.0
+    depends_on:
+      - consul
+      - alert-manager
+    volumes:
+      - ${PROMETHEUS_VOLUME_PATH}:/prometheus
+    ports:
+      - ${PROMETHEUS_PORT}:9090
+    restart: always
+    network_mode: "host"
+
+  consul:
+    image: consul:1.6.1
+    command: [ "agent", "-server", "-datacenter=${CONSUL_DATACENTER}", "-bootstrap-expect=1", "-data-dir=/consul/data", "-client=0.0.0.0",  "-advertise=${CONSUL_ADVERTISE}", "-ui", "-enable-script-checks=true", "-config-dir=/consul/config" ]
+    expose:
+      - 8500
+    volumes:
+      - ${CONSUL_DATA_VOLUME_PATH}:/consul/data
+      - ${CONSUL_CONFIG_VOLUME_PATH}:/consul/config
+    ports:
+      - ${CONSUL_SERVER_PORT}:8300
+      - ${CONSUL_LAN_SERF_PORT}:8301
+      - ${CONSUL_WAN_SERF_PORT}:8302
+      - ${CONSUL_HTTP_PORT}:8500
+      - ${CONSUL_DNS_PORT}:8600
+    restart: always
+    network_mode: "host"
+
+  alert-manager:
+    image: prom/alertmanager:master
+    command: [ "--config.file=/alertManager/config/configuration.yml" ]
+    ports:
+      - ${ALERT_MANAGER_PORT}:9093
+    volumes:
+      - ${ALERT_MANAGER_VOLUME_PATH}:/alertManager
+    restart: always
+    network_mode: "host"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:4.7
+    environment:
+      PMA_HOST: ${DATABASE_IP}
+      PMA_PORT: ${DATABASE_PORT}
+    depends_on:
+      - database
+    ports:
+      - ${PHPMYADMIN_PORT}:80
+    restart: always
+    networks:
+      maestroDatabaseNetwork:
+
+  database:
+    container_name: "maestro_database"
+    image: mysql:5.5
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DATABASE_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DATABASE_NAME}
+    ports:
+      - ${DATABASE_PORT}:3306
+    volumes:
+      - ${DATABASE_VOLUME_PATH}:/var/lib/mysql
+    restart: always
+    networks:
+      maestroDatabaseNetwork:
+
+  landoop:
+    image: landoop/fast-data-dev:1.1.0
+    environment:
+      ADV_HOST: ${KAFKA_ADV_HOST}
+      USER: ${KAFKA_UI_USER}
+      PASSWORD: ${KAFKA_UI_PASSWORD}
+    volumes:
+      - ${KAFKA_VOLUME_PATH}:/data
+    ports:
+      - ${KAFKA_ZOOKEPER_PORT}:2181
+      - ${KAFKA_UI_PORT}:3030
+      - ${KAFKA_SCHEMA_REGISTRY_PORT}:8081
+      - ${KAFKA_REST_PROXY_PORT}:8082
+      - ${KAFKA_CONNECT_DISTRIBUTED_PORT}:8083
+      - ${KAFKA_PORT}:9092
+    restart: always
+
+  grafana:
+    image: grafana/grafana:5.4.2
+    #    ports:
+    #      - ${GRAFANA_PORT}:3000
+    restart: always
+    volumes:
+      - ${GRAFANA_DATA_VOLUME_PATH}:/var/lib/grafana
+      - ${GRAFANA_LOG_VOLUME_PATH}:/var/log/grafana
+      - ${GRAFANA_CONFIG_VOLUME_PATH}:/etc/grafana
+    network_mode: "host"
+
+  swagger:
+    container_name: "maestro_swagger"
+    image: swaggerapi/swagger-ui
+    environment:
+      API_URL: "http://localhost:8080/v2/api-docs"
+    ports:
+      - 8020:8080
+
+networks:
+  maestroDatabaseNetwork:
+
+#  inFluxDB:
+#    image: influxdb:1.5.2-alpine
+#    ports:
+#      - "8086:8086"
+#    depends_on:
+#      - prometheus
+#    restart: always
+#    volumes:
+#      - /mnt/maestromaster/maestro/timeseriesDB:/var/lib/influxdb
+
+

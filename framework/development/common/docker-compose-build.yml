@@ -1,0 +1,7 @@
+version: "3"
+services:
+  ui-backend:
+    build:
+      context: ../../../backend
+      dockerfile: Dockerfile
+    image: ${DOCKER_REPO}/${PROJECT_NAME}-ui-backend:1.8.6

@@ -1,0 +1,10 @@
+{
+                        "expr": "sum(netdata:@GRAPHID:@GRAPHINSTANCEID:@COMPONENT_system_ram_MB_average{chart=\"system.ram\",dimension=\"used\"} * 100) / sum(netdata:@GRAPHID:@GRAPHINSTANCEID:@COMPONENT_system_ram_MB_average{chart=\"system.ram\"})",
+                        "format": "time_series",
+                        "hide": false,
+                        "instant": false,
+                        "interval": "",
+                        "intervalFactor": 1,
+                        "legendFormat": "@COMPONENT",
+                        "refId": "@ALFABETIC"
+                    }

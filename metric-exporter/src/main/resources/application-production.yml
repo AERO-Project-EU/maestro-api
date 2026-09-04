@@ -1,0 +1,25 @@
+server:
+  port: 9080
+
+system:
+  prometheus:
+    url: ${PROMETHEUS_URL:localhost}
+    port: ${PROMETHEUS_PORT:9090}
+  consul:
+    url: ${CONSUL_URL:localhost}
+    port: ${CONSUL_PORT:8500}
+  backend:
+    host: ${BACKEND_URL:localhost}
+    port: ${BACKEND_PORT:8080}
+  ports:
+    netdata: ${NETDATA_PORT:19999}
+    traefik: ${TRAEFIK_PORT:15568}
+  enablePolicyMonitoring: ${ENABLED_MONITORING:true}
+  monitoringMetricEachMilliseconds: ${MONITORING_INTERVAL_MS:10000}
+
+springdoc:
+  default-produces-media-type: "application/json"
+  api-docs:
+    enabled: ${SPRINGDOC_API_DOCS_ENABLED:false}
+  swagger-ui:
+    enabled: ${SPRINGDOC_API_SWAGGER_UI_ENABLED:false}

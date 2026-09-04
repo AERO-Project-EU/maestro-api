@@ -1,0 +1,24 @@
+﻿
+10;DELAY_CRITICAL_GBR;11;5;0.00001;160;TBD;Remote control
+11;DELAY_CRITICAL_GBR;12;10;0.00001;320;TBD;Intelligent transport systems
+12;DELAY_CRITICAL_GBR;13;20;0.00001;640;TBD;N/A
+16;DELAY_CRITICAL_GBR;18;10;0.0001;255;TBD;Discrete Automation
+17;DELAY_CRITICAL_GBR;19;10;0.0001;1358;TBD;Discrete Automation
+1;GBR;20;100;0.01;0;TBD;Conversational Voice
+2;GBR;40;150;0.001;0;TBD;Conversational Video (Live Streaming)
+3;GBR;30;50;0.001;0;TBD;Real Time Gaming, V2X messages (Electricity distribution – medium voltage, Process automation - monitoring)
+4;GBR;50;300;0.000001;0;TBD;Non-Conversational Video (Buffered Streaming)
+65;GBR;7;75;0.01;0;TBD;Mission Critical user plane Push To Talk voice (e.g., MCPTT)
+66;GBR;20;100;0.01;0;TBD;Non-Mission-Critical user plane Push To Talk voice
+75;GBR;25;50;0.01;0;TBD;V2X messages
+E;GBR;18;10;0.0001;255;TBD;Discrete Automation
+F;GBR;19;10;0.0001;1358;TBD;Discrete Automation
+5;NON_GBR;10;100;0.000001;0;N/A;IMS Signalling
+6;NON_GBR;60;300;0.000001;0;N/A;Video (Buffered Streaming)
+7;NON_GBR;70;100;0.001;0;N/A;Voice, Video (Live Streaming)
+8;NON_GBR;80;300;0.000001;0;N/A;Video (Buffered Streaming)
+9;NON_GBR;90;300;0;0;N/A;Sharing, progressive video, etc.)
+69;NON_GBR;5;60;0.000001;0;N/A;Mission Critical delay sensitive signalling (e.g., MC-PTT signalling)
+70;NON_GBR;55;200;0.000001;0;N/A;Mission Critical Data (e.g. example services are the same as QCI 6/8/9)
+79;NON_GBR;65;50;0.01;0;N/A;V2X messages
+80;NON_GBR;66;10;0.000001;0;N/A;Low Latency eMBB applications Augmented Reality

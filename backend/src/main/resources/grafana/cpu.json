@@ -1,0 +1,10 @@
+{
+                        "expr": "100 - Avg(netdata:@GRAPHID:@GRAPHINSTANCEID:@COMPONENT_cpu_cpu_percentage_average{chart=\"cpu.cpu0\",dimension=\"idle\"})",
+                        "format": "time_series",
+                        "hide": false,
+                        "instant": false,
+                        "interval": "",
+                        "intervalFactor": 1,
+                        "legendFormat": "@COMPONENT",
+                        "refId": "@ALFABETIC"
+                    }

@@ -1,0 +1,10 @@
+{
+                        "expr": "avg(netdata:@GRAPHID:@GRAPHINSTANCEID:@COMPONENT_disk_io_kilobytes_persec_average{dimension=\"writes\"}) * (-1)",
+                        "format": "time_series",
+                        "hide": false,
+                        "instant": false,
+                        "interval": "",
+                        "intervalFactor": 1,
+                        "legendFormat": "@COMPONENT",
+                        "refId": "@ALFABETIC"
+                    }

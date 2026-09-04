@@ -1,0 +1,25 @@
+spring:
+  kafka:
+    consumer:
+      bootstrap-servers: ${KAFKA_URL}:${KAFKA_PORT}
+      group-id: "policy-engine"
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      auto-offset-reset: earliest
+
+server:
+  port: 8040
+
+system:
+  prometheus:
+    url: ${PROMETHEUS_URL}
+    port: ${PROMETHEUS_PORT}
+    filePath: ${PROMETHEUS_RULES_PATH:/prometheus/config/}
+  kafka:
+    url: ${KAFKA_URL}
+    port: ${KAFKA_PORT}
+    orchestratorTopicName: ${KAFKA_ORCHESTRATOR_TOPIC:graph-triggered-actions}
+    backendTopicName: ${KAFKA_BACKEND_TOPIC:policy-expression-cruder}
+    infoTopicName: ${KAFKA_INFO_TOPIC:graph-triggered-info}
+  drools:
+    filePath: ${DROOLS_RULES_PATH:/rules/}

@@ -1,0 +1,137 @@
+version: '3'
+services:
+
+  ui-backend:
+    build:
+      context: ../../../backend
+      dockerfile: Dockerfile
+    image: maestro/ui-backend:0.0.1
+    environment:
+      DATABASE_URL: localhost
+      DATABASE_PORT: 3306
+      UI_URL: localhost
+      UI_PORT: 8080
+      VIM_URL: localhost
+      VIM_PORT: 8070
+      ORCHESTRATOR_URL: localhost
+      ORCHESTRATOR_PORT: 8090
+      OSS_URL: ${SERVER_IP}
+      OSS_PORT: 8200
+      CONSUL_URL: ${SERVER_IP}
+      CONSUL_PORT: 8500
+      CONSUL_URL_IPV6: "[${SERVER_IPv6}]"
+      POLICYENGINE_URL: ${SERVER_IP}
+      POLICYENGINE_PORT: 8040
+      KAFKA_URL: ${SERVER_IP}
+      KAFKA_PORT: 9092
+      EXPORTER_URL: ${SERVER_IP}
+      EXPORTER_PORT: 9080
+      PROMETHEUS_URL: ${SERVER_IP}
+      PROMETHEUS_PORT: 9090
+      PHYSIOGNOMICA_URL: ${PHYSIOGNOMICA_IP}
+      PHYSIOGNOMICA_PORT: 8082
+      GRAFANA_URL: ${SERVER_IP}
+      GRAFANA_PORT: 3000
+    #      PPDR_ENABLE: true
+    #      OLISTIC_ENABLE: true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - database
+      - core-orchestrator
+      - virtualization-manager
+    restart: always
+    network_mode: "host"
+
+  core-orchestrator:
+    build:
+      context: ../../../core-orchestrator
+      dockerfile: Dockerfile
+    image: maestro/core-orchestrator:0.1.0
+    environment:
+      CONSUL_URL: ${SERVER_IP}
+      CONSUL_PORT: 8500
+      CONSUL_IPV6: ${SERVER_IPv6}
+      CONSUL_IPV6_ENABLED: 'true'
+      VIM_URL: localhost
+      VIM_PORT: 8070
+      KAFKA_URL: ${SERVER_IP}
+      KAFKA_PORT: 9092
+      BACKEND_URL: localhost
+      BACKEND_PORT: 8080
+      RELAY_IPV4: ${SERVER_IP}
+      RELAY_PORT: 47695
+      RELAY_PASSWORD: ${RELAY_PASSWORD}
+      RELAY_PUBLIC_KEY: ${RELAY_PUBLIC_KEY}
+      RELAY_IPV6: ${SERVER_IPv6}
+      RELAY_CLUSTER: maestro
+      IDS_REGISTRY: ${IDS_REGISTRY}
+      IDS_IMAGE: snort:1.0.0
+      IDS_USERNAME: ${IDS_USERNAME}
+      IDS_PASSWORD: ${IDS_PASSWORD}
+      AGENT_URL: ${ORCHESTRATOR_AGENT_URL}
+      AGENT_USERNAME: ${AGENT_USERNAME}
+      NFS_SERVER_IP: ${ORCHESTRATOR_NFS_SERVER_IP}
+    depends_on:
+      - virtualization-manager
+    restart: always
+    network_mode: "host"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:4.7
+    environment:
+      PMA_PORT: 3306
+      PMA_HOST: database
+    depends_on:
+      - database
+    ports:
+      - "8010:80"
+    restart: always
+    networks:
+      maestroDatabaseNetwork:
+
+  virtualization-manager:
+    build:
+      context: ../../../virtualization-manager
+      dockerfile: Dockerfile
+    image: maestro/virtualization-manager:0.1.0
+    environment:
+      IMAGE_ID: 5023ff93-b96b-4dd1-896d-bb5945819a40
+    restart: always
+    network_mode: "host"
+
+  database:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DATABASE_ROOT_PASSWORD}
+      MYSQL_DATABASE: orchestrator
+    platform: linux/amd64
+    ports:
+      - "3306:3306"
+        #    volumes:
+      # - /data/database/mysql:/var/lib/mysql
+    restart: always
+    networks:
+      maestroDatabaseNetwork:
+
+  grafana:
+    image: grafana/grafana:5.4.2
+    #    ports:
+    #      - "3000:3000"
+    restart: always
+    network_mode: "host"
+    volumes:
+      - /data/maestro/grafana/data:/var/lib/grafana
+      - /data/maestro/grafana/log:/var/log/grafana
+      - /data/maestro/grafana/config:/etc/grafana
+
+  swagger:
+    container_name: "maestro_swagger"
+    image: swaggerapi/swagger-ui
+    environment:
+      URL: "http://localhost:8080/v3/api-docs"
+    ports:
+      - "8020:8080"
+
+networks:
+  maestroDatabaseNetwork:

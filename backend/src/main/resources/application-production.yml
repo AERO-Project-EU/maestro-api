@@ -1,0 +1,287 @@
+project:
+  name: ${PROJECT_NAME:Maestro}
+
+server:
+  port: 8080
+  #  use-forward-headers: true
+  compression:
+    enabled: true
+
+app:
+  settings:
+    timezone: Europe/Athens
+
+# Base URI of this API, used by the elasticity module to call back into it.
+elasticity:
+  rest:
+    uri: ${ELASTICITY_REST_URI:http://localhost:8080/api/v1}
+
+  # Traefik load balancer / lambda proxy created by the elasticity adapters.
+  traefik:
+    registry:
+      host: ${TRAEFIK_REGISTRY:}
+      username: ${TRAEFIK_REGISTRY_USERNAME:}
+      password: ${TRAEFIK_REGISTRY_PASSWORD:}
+    port: ${TRAEFIK_PORT:15568}
+  # Base URL of the registry search API, used to resolve the digest of the balancer image.
+  registry:
+    search:
+      url: ${REGISTRY_SEARCH_URL:}
+
+# Metric module: base URI it calls back into, and the Rainbow metrics API.
+metric:
+  rest:
+    uri: ${METRIC_REST_URI:http://localhost:8080/api/v1}
+  rainbow:
+    token: ${RAINBOW_METRICS_TOKEN:}
+    port: ${RAINBOW_METRICS_PORT:5000}
+    list:
+      port: ${RAINBOW_METRICS_LIST_PORT:50000}
+
+# Production keeps MongoDB enabled by default (set MONGO_ENABLED=false to turn it off).
+mongo:
+  enabled: ${MONGO_ENABLED:true}
+
+#Template caching
+spring:
+  # Spring Boot 2.6+ forbids circular bean references by default. Several services (e.g.
+  # providerService <-> applicationInstanceService) are mutually dependent; allow it for now.
+  # TODO(phase2): break these cycles and remove this flag.
+  main:
+    allow-circular-references: true
+  # Mongo client + data auto-config stay ON in production; only the repository auto-config is
+  # excluded because MongoConfig supplies @EnableMongoRepositories with the correct base package.
+  autoconfigure:
+    exclude: "org.springframework.boot.autoconfigure.data.mongo.MongoRepositoriesAutoConfiguration"
+  data:
+    rest:
+      base-path: /api/v2
+  thymeleaf:
+    cache: false
+  #    check-template-location: true
+  template:
+    cache: false
+  datasource:
+    # allowPublicKeyRetrieval is required from MySQL 8.4 on
+    url: jdbc:mysql://${DATABASE_URL}:${DATABASE_PORT}/orchestrator?useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: ${DATABASE_USERNAME:root}
+    password: ${DATABASE_PASSWORD:}
+    driverClassName: com.mysql.cj.jdbc.Driver
+
+    # Configuring auto reconnect
+    testOnBorrow: true
+    validationQuery: SELECT 1
+
+  # Specify the DBMS-Type
+  jpa:
+    database: MYSQL
+
+    ## Show or not log for each sql query
+    show-sql: false
+
+    # Hibernate settings are prefixed with spring.jpa.hibernate.*   // create, update or none
+    hibernate:
+      ddl-auto: update
+    # Dialect is auto-detected from the JDBC connection (Hibernate 5.6). The legacy
+    # naming_strategy (ImprovedNamingStrategy) was removed in Hibernate 5 and is no longer set;
+    # Spring Boot's default naming strategy already maps camelCase -> snake_case.
+  servlet:
+    multipart:
+      max-file-size: -1
+      max-request-size: -1
+      enabled: true
+
+  rabbitmq:
+    host: ${RABBIT_MQ_URL:localhost}
+    port: ${RABBIT_MQ_PORT:1234}
+    user: ${RABBIT_MQ_USER:guest}
+    password: ${RABBIT_MQ_PASSWORD:guest}
+
+##Token to encrypt
+# Shared secret used to sign/encrypt tokens. Must match the virtualization-manager,
+# the core-orchestrator (key.token) and the agent (AGENT_ENCRYPTION_KEY).
+token:
+  signer:
+    secret: ${TOKEN_SIGNER_SECRET}
+
+################
+# MESSAGE SOURCE
+################
+
+message:
+  source:
+    basename: i18n/messages
+    use:
+      code:
+        as:
+          default:
+            message: true
+
+multipart:
+  storage:
+    path: ~/Downloads
+
+ui:
+  server:
+    url: http://${UI_URL}:${UI_PORT}
+
+orchestrator:
+  server:
+    url: http://${ORCHESTRATOR_URL:localhost}:${ORCHESTRATOR_PORT:1234}
+
+oss:
+  server:
+    url: http://${OSS_URL:localhost}:${OSS_PORT:1234}
+  tac:
+    url: ${TAC_ENDPOINT:localhost}
+
+vim:
+  server:
+    url: http://${VIM_URL:localhost}:${VIM_PORT:1234}
+
+prometheus:
+  server:
+    url: http://${PROMETHEUS_URL:localhost}:${PROMETHEUS_PORT:1234}
+    type: "vm_prometheus"
+  k8s:
+    url: http://${K8S_PROMETHEUS_URL:localhost}:${K8S_PROMETHEUS_PORT:1234}
+    host: ${K8S_PROMETHEUS_URL:localhost}:${K8S_PROMETHEUS_PORT:30000}
+    type: "k8s_prometheus"
+
+grafana:
+  server:
+    url: http://${GRAFANA_URL:localhost}:${GRAFANA_PORT:1234}
+    token: ${GRAFANA_TOKEN:}
+
+analytic:
+  engine:
+    server:
+      url: http://${ANALYTIC_ENGINE_URL:analyticurl}:${ANALYTIC_ENGINE_PORT:1234}
+  server:
+    server:
+      url: http://${ANALYTIC_SERVER_URL:analyticurl}:${ANALYTIC_SERVER_PORT:1234}
+      domain: ${ANALYTIC_SERVER_DOMAIN:localhost}
+
+exporter:
+  server:
+    url: http://${EXPORTER_URL:exporterurl}:${EXPORTER_PORT:1234}
+
+expert-system:
+  server:
+    url: http://${EXPERT_SYSTEM_URL:localhost}:${EXPERT_SYSTEM_PORT:9797}
+
+consul:
+  server:
+    url: ${CONSUL_URL:localhost}:${CONSUL_PORT:1234}
+    ipv6: "${CONSUL_URL_IPV6:localhost}:${CONSUL_PORT:1234}"
+
+policy-engine:
+  server:
+    url: http://${POLICYENGINE_URL:localhost}:${POLICYENGINE_PORT:1234}
+  kubernetes-config:
+    config-map-namespace: monitoring
+    config-map-name: prometheus-server-conf
+  prometheus-config:
+    prometheus-ip: http://${POLICY_ENGINE_PROMETHEUS_IP:localhost}
+    prometheus-port: ${POLICY_ENGINE_PROMETHEUS_PORT:1234}
+
+#TODO ADD THE FOLLOWING ENV ON EACH DOCKER-COMPOSE
+soc:
+  server:
+    host: ${SOC_URL:localhost}
+    ksql-port: ${SOC_KSQL_PORT:1234}
+    broker-port: ${SOC_BROKER_PORT:1234}
+
+kafka:
+  server:
+    url: ${KAFKA_URL:localhost}:${KAFKA_PORT:1234}
+  group: maestro
+  topic:
+    reporting: reporting-status
+    agent-ids-alerting: agent-ids-alert
+    agent-ids-configuration: agent-ids-configuration
+    agent-ips-configuration: agent-ips-configuration
+    agent-security-configuration: agent-security-configuration #TODO for astid
+    agent-security-configuration-result: agent-security-configuration-result #TODO for astid
+    elasticity-policies: policy-expression-cruder
+    soc-policies: soc-policy
+    orchestrator: backend-requests
+    policy-engine-info-msgs: graph-triggered-info
+    policy-engine-actions: policy-engine
+    orchestrator-deployment-topology: orchestrator-deployment-topology
+    external-orchestrator-deployment-topology: external-orchestrator-deployment-topology
+    application-instance-ip-topic: spider-application-instance-ip #TODO for spider
+
+nfs:
+  path: ${CONTAINER_NFS_PATH:localhost}
+  server:
+    path: ${MOUNTPOINT_ON_NFS_SERVER:local}
+
+links:
+  showGrafana: ${LINKS_SHOW_GRAFANA:false}
+  showPrometheus: ${LINKS_SHOW_PROMETHEUS:true}
+  showVulnerabilities: ${LINKS_SHOW_VULNERABILITIES:false}
+  showKibana: ${LINKS_SHOW_KIBANA:false}
+
+initialization:
+  seed:
+    user-password-hash: ${SEED_USER_PASSWORD_HASH:}
+    netdata-plugin-base-url: ${NETDATA_PLUGIN_BASE_URL:}
+  applications:
+    ppdr: ${PPDR_ENABLE:false}
+    olistic: ${OLISTIC_ENABLE:false}
+  provider:
+    telcoProvider: ${TELCO_PROVIDER_ENABLE:false}
+    iotGatewayProvider: ${IOTGATEWAY_PROVIDER_ENABLE:false}
+    awsProvider: ${AWS_PROVIDER_ENABLE:false}
+    ubiDell: ${DELL_PROVIDER_ENABLE:false}
+    kubernetesProvider: ${KUBERNETES_PROVIDER_ENABLE:false}
+    ubiDellUnicorn: ${DELL_UNICORN_PROVIDER_ENABLE:false}
+    ubiDellMatilda: ${DELL_MATILDA_PROVIDER_ENABLE:false}
+    ubiTestProvider: ${TEST_PROVIDER_ENABLE:false}
+    ubiDellAstrid: ${DELL_ASTRID_PROVIDER_ENABLE:false}
+    ubiDellSpider: ${DELL_SPIDER_PROVIDER_ENABLE:false}
+    rainbowKubernetesProvider: ${RAINBOW_KUBERNETES_PROVIDER_ENABLE:false}
+    astridKubernetesProvider: ${ASTRID_KUBERNETES_PROVIDER_ENABLE:false}
+    datacloudKubernetesProvider: ${DATACLOUD_KUBERNETES_PROVIDER_ENABLE:false}
+dns:
+  credentials:
+    username: ${DNS_USERNAME:}
+    password: ${DNS_PASSWORD:}
+  url: ${DNS_URL:localhost:9080}
+  domains: ${DNS_DOMAINS:}
+
+springdoc:
+  default-produces-media-type: "application/json"
+  api-docs:
+    enabled: ${SPRINGDOC_API_DOCS_ENABLED:false}
+    path: ${SPRINGDOC_API_DOCS_PATH:"/api/openapi"}
+  swagger-ui:
+    enabled: ${SPRINGDOC_API_SWAGGER_UI_ENABLED:false}
+    path: ${SPRINGDOC_API_SWAGGER_UI_PATH:"/api/swagger"}
+
+kafka-flag:
+  enabled: ${ENABLE_KAFKA:"on"}
+
+# Kubernetes provider credentials seeded at startup (base64 encoded PEM).
+openstack:
+  endpoint: ${OPENSTACK_ENDPOINT:}
+
+kubernetes:
+  consider-resources: ${KUBERNETES_RESOURCES_ENABLE:false}
+  labels:
+    #    - all
+    - kubernetes.io/os
+    - kubernetes.io/arch
+    - kubernetes.io/hostname
+  # Provider credentials seeded at startup (base64 encoded PEM).
+  datacloud:
+    endpoint: ${DATACLOUD_K8S_ENDPOINT:}
+    ca-certificate: ${DATACLOUD_K8S_CA_CERT:}
+    client-certificate: ${DATACLOUD_K8S_CLIENT_CERT:}
+    client-key: ${DATACLOUD_K8S_CLIENT_KEY:}
+  rainbow:
+    endpoint: ${RAINBOW_K8S_ENDPOINT:}
+    ca-certificate: ${RAINBOW_K8S_CA_CERT:}
+    client-certificate: ${RAINBOW_K8S_CLIENT_CERT:}
+    client-key: ${RAINBOW_K8S_CLIENT_KEY:}

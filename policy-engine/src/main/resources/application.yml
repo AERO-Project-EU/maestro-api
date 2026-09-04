@@ -1,0 +1,25 @@
+spring:
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: "policy-engine"
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      auto-offset-reset: earliest
+
+server:
+  port: 8040
+
+system:
+  prometheus:
+    url: "localhost"
+    port: 9090
+    filePath: "/data/maestro/prometheus/config/"
+  kafka:
+    url: "localhost"
+    port: 9092
+    orchestratorTopicName: "graph-triggered-actions"
+    backendTopicName: "policy-expression-cruder"
+    infoTopicName: "graph-triggered-info"
+  drools:
+    filePath: "/data/maestro/policy-engine/rules/"

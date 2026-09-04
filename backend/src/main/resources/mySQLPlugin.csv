@@ -1,0 +1,36 @@
+python.d,mysql,_mysql_table_locks_locks_persec_average,mysql Tables Locks (mysql_mysql.table_locks),locks/s,0,0
+python.d,mysql,_mysql_galera_conflicts_transactions_average,Replication conflicts (mysql_mysql.galera_conflicts),transactions,0,0
+python.d,mysql,_mysql_join_issues_joins_persec_average,mysql Select Join Issues (mysql_mysql.join_issues),joins/s,0,0
+python.d,mysql,_mysql_tmp_counter_average,mysql Tmp Operations (mysql_mysql.tmp),counter,0,0
+python.d,mysql,_mysql_net_kilobits_persec_average,mysql Bandwidth (mysql_mysql.net),kilobits/s,0,0
+python.d,mysql,_mysql_handlers_handlers_persec_average,mysql Handlers (mysql_mysql.handlers),handlers/s,0,0
+python.d,mysql,_mysql_sort_issues_issues_persec_average,mysql Sort Issues (mysql_mysql.sort_issues),issues/s,0,0
+python.d,mysql,_mysql_queries_queries_persec_average,mysql Queries (mysql_mysql.queries),queries/s,0,0
+python.d,mysql,_mysql_qcache_freemem_MB_average,mysql QCache Free Memory (mysql_mysql.qcache_freemem),MB,0,0
+python.d,mysql,_mysql_qcache_ops_queries_persec_average,mysql QCache Operations (mysql_mysql.qcache_ops),queries/s,0,0
+python.d,mysql,_mysql_qcache_memblocks_blocks_average,mysql QCache Memory Blocks (mysql_mysql.qcache_memblocks),blocks,0,0
+python.d,mysql,_mysql_qcache_queries_average,mysql QCache Queries in Cache (mysql_mysql.qcache),queries,0,0
+python.d,mysql,_mysql_files_files_average,mysql Open Files (mysql_mysql.files),files,0,0
+python.d,mysql,_mysql_files_rate_files_persec_average,mysql Opened Files Rate (mysql_mysql.files_rate),files/s,0,0
+python.d,mysql,_mysql_key_requests_requests_persec_average,mysql MyISAM Key Cache Requests (mysql_mysql.key_requests),requests/s,0,0
+python.d,mysql,_mysql_key_disk_ops_operations_persec_average,mysql MyISAM Key Cache Disk Operations (mysql_mysql.key_disk_ops),operations/s,0,0
+python.d,mysql,_mysql_key_blocks_blocks_average,mysql MyISAM Key Cache Blocks (mysql_mysql.key_blocks),blocks,0,0
+python.d,mysql,_mysql_thread_cache_misses_misses_average,mysql Threads Cache Misses (mysql_mysql.thread_cache_misses),misses,0,0
+python.d,mysql,_mysql_threads_threads_average,mysql Threads (mysql_mysql.threads),threads,0,0
+python.d,mysql,_mysql_connection_errors_connections_persec_average,mysql Connection Errors (mysql_mysql.connection_errors),connections/s,0,0
+python.d,mysql,_mysql_connections_connections_persec_average,mysql Connections (mysql_mysql.connections),connections/s,0,0
+python.d,mysql,_mysql_binlog_stmt_cache_statements_persec_average,mysql Binlog Statement Cache (mysql_mysql.binlog_stmt_cache),statements/s,0,0
+python.d,mysql,_mysql_binlog_cache_transactions_persec_average,mysql Binlog Cache (mysql_mysql.binlog_cache),transactions/s,0,0
+python.d,mysql,_mysql_innodb_io_pending_ops_operations_average,mysql InnoDB Pending I/O Operations (mysql_mysql.innodb_io_pending_ops),operations,0,0
+python.d,mysql,_mysql_innodb_io_kilobytes_persec_average,mysql InnoDB I/O Bandwidth (mysql_mysql.innodb_io),kilobytes/s,0,0
+python.d,mysql,_mysql_innodb_io_ops_operations_persec_average,mysql InnoDB I/O Operations (mysql_mysql.innodb_io_ops),operations/s,0,0
+python.d,mysql,_mysql_innodb_buffer_pool_bytes_MB_average,mysql InnoDB Buffer Pool Bytes (mysql_mysql.innodb_buffer_pool_bytes),MB,0,0
+python.d,mysql,_mysql_innodb_buffer_pool_read_ahead_operations_persec_average,mysql InnoDB Buffer Pool Read Ahead (mysql_mysql.innodb_buffer_pool_read_ahead),operations/s,0,0
+python.d,mysql,_mysql_innodb_buffer_pool_reqs_requests_persec_average,mysql InnoDB Buffer Pool Requests (mysql_mysql.innodb_buffer_pool_reqs),requests/s,0,0
+python.d,mysql,_mysql_innodb_buffer_pool_ops_operations_persec_average,mysql InnoDB Buffer Pool Operations (mysql_mysql.innodb_buffer_pool_ops),operations/s,0,0
+python.d,mysql,_mysql_innodb_buffer_pool_pages_pages_average,mysql InnoDB Buffer Pool Pages (mysql_mysql.innodb_buffer_pool_pages),pages,0,0
+python.d,mysql,_mysql_innodb_os_log_operations_average,mysql InnoDB OS Log Operations (mysql_mysql.innodb_os_log),operations,0,0
+python.d,mysql,_mysql_innodb_os_log_io_kilobytes_persec_average,mysql InnoDB OS Log Bandwidth (mysql_mysql.innodb_os_log_io),kilobytes/s,0,0
+python.d,mysql,_mysql_innodb_cur_row_lock_operations_average,mysql InnoDB Current Row Locks (mysql_mysql.innodb_cur_row_lock),operations,0,0
+python.d,mysql,_mysql_innodb_log_operations_persec_average,mysql InnoDB Log Operations (mysql_mysql.innodb_log),operations/s,0,0
+python.d,mysql,_mysql_innodb_rows_operations_persec_average,mysql InnoDB Row Operations (mysql_mysql.innodb_rows),operations/s,0,0

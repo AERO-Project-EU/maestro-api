@@ -1,0 +1,38 @@
+version: '3'
+services:
+
+  ui-backend:
+    build:
+      context: ../../../backend
+      dockerfile: Dockerfile
+    image: ${DOCKER_REPO}/ui-backend:1.6.0
+
+  core-orchestrator:
+    build:
+      context: ../../../core-orchestrator
+      dockerfile: Dockerfile
+    image: ${DOCKER_REPO}/core-orchestrator:1.6.0
+
+  policy-engine:
+    build:
+      context: ../../../policy-engine
+      dockerfile: Dockerfile
+    image: ${DOCKER_REPO}/policy-engine:1.6.0
+
+  virtualization-manager:
+    build:
+      context: ../../../virtualization-manager
+      dockerfile: Dockerfile
+    image: ${DOCKER_REPO}/virtualization-manager:1.6.0
+
+  metric-exporter:
+    build:
+      context: ../../../metric-exporter
+      dockerfile: Dockerfile
+    image: ${DOCKER_REPO}/metric-exporter:1.6.0
+
+  prometheus:
+    build:
+      context: ../../../ext-deps/prometheus
+      dockerfile: Dockerfile
+    image: ${DOCKER_REPO}/prometheus:2.23.0

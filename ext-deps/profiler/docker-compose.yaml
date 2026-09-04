@@ -1,0 +1,31 @@
+version: '3'
+services:
+
+  son-mongo:
+    image: mongo
+    container_name: son-mongo
+    ports:
+        - 27017:27017
+    restart: always
+
+  tng-analytics-engine:
+    image: maestro-public-repository.ubitech.eu/analytic-engine:latest
+    container_name:  tng-analytics-engine
+    environment:
+      PROMETHEUS_URL: ${PROMETHEUS_URL:-localhost:9090}
+    ports:
+      - "8085:8085"
+    depends_on:
+      - son-mongo
+      - tng-analytics-rserver
+    restart: always
+
+  tng-analytics-rserver:
+    image: maestro-public-repository.ubitech.eu/analytic-server:latest
+    container_name: tng-analytics-rserver
+    ports:
+      - "8086:80"
+    restart: always
+
+
+

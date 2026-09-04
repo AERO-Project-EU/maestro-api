@@ -1,0 +1,21 @@
+server:
+  port: 9080
+
+system:
+  prometheus:
+    url: localhost
+    port: 9090
+  consul:
+    url: localhost
+    port: 8500
+  backend:
+    host: localhost
+    port: 8080
+  ports:
+    netdata: 19999
+    traefik: 15568
+  enablePolicyMonitoring: true
+  monitoringMetricEachMilliseconds: 10000
+
+springdoc:
+  default-produces-media-type: "application/json"

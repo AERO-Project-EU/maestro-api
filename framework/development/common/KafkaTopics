@@ -1,0 +1,8 @@
+//Autocreatable
+policy-expression
+reporting-status
+
+//Must be created manually
+kafka-topics  --create --zookeeper <zookeeper-host>:2181 --replication-factor 1 --partitions 1 --topic graph-triggered-actions
+kafka-topics  --create --zookeeper <zookeeper-host>:2181 --replication-factor 1 --partitions 1 --topic backend-requests
+kafka-topics  --create --zookeeper <zookeeper-host>:2181 --replication-factor 1 --partitions 1 --topic agent-commands

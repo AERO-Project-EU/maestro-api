@@ -1,0 +1,160 @@
+proc,/proc/net/snmp,_ipv4_udperrors_events_persec_average,IPv4 UDP Errors (ipv4.udperrors),events/s,0,1
+proc,/proc/net/snmp,_ipv4_tcpsock_active_connections_average,IPv4 TCP Connections (ipv4.tcpsock),active connections,0,1
+proc,/proc/net/snmp,_ipv4_icmp_errors_packets_persec_average,IPv4 ICMP Errors (ipv4.icmp_errors),packets/s,0,1
+proc,/proc/net/snmp,_ipv4_tcppackets_packets_persec_average,IPv4 TCP Packets (ipv4.tcppackets),packets/s,0,1
+proc,/proc/net/snmp,_ipv4_tcphandshake_events_persec_average,IPv4 TCP Handshake Issues (ipv4.tcphandshake),events/s,0,1
+proc,/proc/net/snmp,_ipv4_udppackets_packets_persec_average,IPv4 UDP Packets (ipv4.udppackets),packets/s,0,1
+proc,/proc/net/snmp,_ipv4_icmp_packets_persec_average,IPv4 ICMP Packets (ipv4.icmp),packets/s,0,1
+proc,/proc/net/snmp,_ipv4_tcperrors_packets_persec_average,IPv4 TCP Errors (ipv4.tcperrors),packets/s,0,1
+proc,/proc/net/snmp,_ipv4_icmpmsg_packets_persec_average,IPv4 ICMP Messages (ipv4.icmpmsg),packets/s,0,1
+proc,/proc/net/snmp,_ipv4_packets_packets_persec_average,IPv4 Packets (ipv4.packets),packets/s,0,1
+proc,/proc/net/snmp,_ipv4_tcpopens_connections_persec_average,IPv4 TCP Opens (ipv4.tcpopens),connections/s,0,1
+proc,/proc/net/snmp,_ipv4_errors_packets_persec_average,IPv4 Errors (ipv4.errors),packets/s,0,1
+proc,/proc/softirqs,_cpu_softirqs_softirqs_persec_average,CPU2 softirqs (cpu.cpu2_softirqs),softirqs/s,0,1
+proc,/proc/softirqs,_system_softirqs_softirqs_persec_average,System softirqs (system.softirqs),softirqs/s,0,1
+proc,/proc/net/netstat,_system_ipv4_kilobits_persec_average,IPv4 Bandwidth (system.ipv4),kilobits/s,0,1
+proc,/proc/net/netstat,_ipv4_tcpreorders_packets_persec_average,TCP Reordered Packets by Detection Method (ipv4.tcpreorders),packets/s,0,1
+proc,/proc/net/netstat,_ipv4_tcplistenissues_packets_persec_average,TCP Listen Socket Issues (ipv4.tcplistenissues),packets/s,0,1
+proc,/proc/net/netstat,_ipv4_tcpofo_packets_persec_average,TCP Out-Of-Order Queue (ipv4.tcpofo),packets/s,0,1
+proc,/proc/net/netstat,_ipv4_tcpconnaborts_connections_persec_average,TCP Connection Aborts (ipv4.tcpconnaborts),connections/s,0,1
+proc,/proc/net/netstat,_ipv4_ecnpkts_packets_persec_average,IPv4 ECN Statistics (ipv4.ecnpkts),packets/s,0,1
+proc,/proc/vmstat,_mem_pgfaults_page_faults_persec_average,Memory Page Faults (mem.pgfaults),page faults/s,0,1
+proc,/proc/vmstat,_system_pgpgio_kilobytes_persec_average,Memory Paged from/to disk (system.pgpgio),kilobytes/s,0,1
+proc,/proc/net/sockstat6,_ipv6_sockstat6_tcp_sockets_sockets_average,IPv6 TCP Sockets (ipv6.sockstat6_tcp_sockets),sockets,0,1
+proc,/proc/net/sockstat6,_ipv6_sockstat6_udp_sockets_sockets_average,IPv6 UDP Sockets (ipv6.sockstat6_udp_sockets),sockets,0,1
+proc,ipc,_system_ipc_semaphore_arrays_arrays_average,IPC Semaphore Arrays (system.ipc_semaphore_arrays),arrays,0,1
+proc,ipc,_system_ipc_semaphores_semaphores_average,IPC Semaphores (system.ipc_semaphores),semaphores,0,1
+statsd,stats,_netdata_statsd_cpu_milliseconds_persec_average,NetData statsd collector thread No 1 CPU usage (netdata.plugin_statsd_collector1_cpu),milliseconds/s,0,1
+statsd,stats,_netdata_tcp_connects_events_average,statsd server TCP connects and disconnects (netdata.tcp_connects),events,0,1
+statsd,stats,_netdata_statsd_events_events_persec_average,Events processed by the netdata statsd server (netdata.statsd_events),events/s,0,1
+statsd,stats,_netdata_statsd_useful_metrics_metrics_average,Useful metrics in the netdata statsd database (netdata.statsd_useful_metrics),metrics,0,1
+statsd,stats,_netdata_tcp_connected_connected_average,statsd server TCP connected sockets (netdata.tcp_connected),connected,0,1
+statsd,stats,_netdata_private_charts_charts_average,Private metric charts created by the netdata statsd server (netdata.private_charts),charts,0,1
+statsd,stats,_netdata_statsd_reads_reads_persec_average,Read operations made by the netdata statsd server (netdata.statsd_reads),reads/s,0,1
+statsd,stats,_netdata_statsd_metrics_metrics_average,Metrics in the netdata statsd database (netdata.statsd_metrics),metrics,0,1
+proc,/proc/interrupts,_cpu_interrupts_interrupts_persec_average,CPU0 Interrupts (cpu.cpu0_interrupts),interrupts/s,0,1
+proc,/proc/interrupts,_system_interrupts_interrupts_persec_average,System interrupts (system.interrupts),interrupts/s,0,1
+proc,/sys/kernel/mm/ksm,_mem_ksm_MB_average,Kernel Same Page Merging (mem.ksm),MB,0,1
+proc,/sys/kernel/mm/ksm,_mem_ksm_savings_MB_average,Kernel Same Page Merging Savings (mem.ksm_savings),MB,0,1
+proc,/sys/kernel/mm/ksm,_mem_ksm_ratios_percentage_average,Kernel Same Page Merging Effectiveness (mem.ksm_ratios),percentage,0,1
+proc,/proc/stat,_system_intr_interrupts_persec_average,CPU Interrupts (system.intr),interrupts/s,1,1
+proc,/proc/stat,_system_ctxt_context_switches_persec_average,CPU Context Switches (system.ctxt),context switches/s,1,1
+proc,/proc/stat,_cpu_cpu_percentage_average,Core utilization (cpu.cpu2),percentage,1,1
+proc,/proc/stat,_system_forks_processes_persec_average,Started Processes (system.forks),processes/s,1,1
+proc,/proc/stat,_system_cpu_percentage_average,Total CPU utilization (system.cpu),percentage,1,1
+proc,/proc/stat,_system_processes_processes_average,System Processes (system.processes),processes,1,1
+proc,/proc/net/dev,_net_net_kilobits_persec_average,Bandwidth (net.vpn0),kilobits/s,1,1
+proc,/proc/net/dev,_system_net_kilobits_persec_average,Physical Network Interfaces Aggregated Bandwidth (system.net),kilobits/s,1,1
+proc,/proc/net/dev,_net_packets_packets_persec_average,Packets (net_packets.eth0),packets/s,1,1
+proc,/proc/diskstats,_disk_io_kilobytes_persec_average,Disk I/O Bandwidth (disk.config_2),kilobytes/s,1,1
+proc,/proc/diskstats,_disk_avgsz_kilobytes_per_operation_average,Average Completed I/O Operation Bandwidth (disk_avgsz.config_2),kilobytes per operation,1,1
+proc,/proc/diskstats,_disk_svctm_ms_per_operation_average,Average Service Time (disk_svctm.config_2),ms per operation,1,1
+proc,/proc/diskstats,_disk_ops_operations_persec_average,Disk Completed I/O Operations (disk_ops.config_2),operations/s,1,1
+proc,/proc/diskstats,_system_io_kilobytes_persec_average,Disk I/O (system.io),kilobytes/s,1,1
+proc,/proc/diskstats,_disk_iotime_milliseconds_persec_average,Disk Total I/O Time (disk_iotime.config_2),milliseconds/s,1,1
+proc,/proc/diskstats,_disk_util___of_time_working_average,Disk Utilization Time (disk_util.config_2),% of time working,1,1
+proc,/proc/diskstats,_disk_mops_merged_operations_persec_average,Disk Merged Operations (disk_mops.vda),merged operations/s,1,1
+proc,/proc/diskstats,_disk_await_ms_per_operation_average,Average Completed I/O Operation Time (disk_await.config_2),ms per operation,1,1
+proc,/proc/diskstats,_disk_qops_operations_average,Disk Current I/O Operations (disk_qops.vda),operations,1,1
+proc,/proc/diskstats,_disk_backlog_backlog__ms__average,Disk Backlog (disk_backlog.config_2),backlog (ms),1,1
+proc,/proc/net/sockstat,_ipv4_sockstat_sockets_sockets_average,IPv4 Sockets Used (ipv4.sockstat_sockets),sockets,0,1
+proc,/proc/net/sockstat,_ipv4_sockstat_udp_mem_KB_average,IPv4 UDP Sockets Memory (ipv4.sockstat_udp_mem),KB,0,1
+proc,/proc/net/sockstat,_ipv4_sockstat_tcp_mem_KB_average,IPv4 TCP Sockets Memory (ipv4.sockstat_tcp_mem),KB,0,1
+proc,/proc/net/sockstat,_ipv4_sockstat_tcp_sockets_sockets_average,IPv4 TCP Sockets (ipv4.sockstat_tcp_sockets),sockets,0,1
+proc,/proc/net/sockstat,_ipv4_sockstat_udp_sockets_sockets_average,IPv4 UDP Sockets (ipv4.sockstat_udp_sockets),sockets,0,1
+diskspace,,_disk_inodes_Inodes_average,Disk Files (inodes) Usage for /run [tmpfs] (disk_inodes._run),Inodes,1,1
+diskspace,,_disk_space_GB_average,Disk Space Usage for /run [tmpfs] (disk_space._run),GB,1,1
+diskspace,,_netdata_plugin_diskspace_dt_milliseconds_run_average,NetData Disk Space Plugin Duration (netdata.plugin_diskspace_dt),milliseconds/run,1,1
+diskspace,,_netdata_plugin_diskspace_milliseconds_persec_average,NetData Disk Space Plugin CPU usage (netdata.plugin_diskspace),milliseconds/s,1,1
+tc,,_tc_qos_packets_packets_persec_average,Class Packets (tc.world_out_packets),packets/s,0,1
+tc,,_tc_qos_kilobits_persec_average,Class Usage (tc.world_out),kilobits/s,0,1
+tc,,_netdata_plugin_tc_time_milliseconds_run_average,NetData TC script execution (netdata.plugin_tc_time),milliseconds/run,0,1
+tc,,_netdata_plugin_tc_cpu_milliseconds_persec_average,NetData TC CPU usage (netdata.plugin_tc_cpu),milliseconds/s,0,1
+tc,,_tc_qos_dropped_packets_persec_average,Class Dropped Packets (tc.world_out_dropped),packets/s,0,1
+proc,/proc/meminfo,_mem_available_MB_average,Available RAM for applications (mem.available),MB,1,1
+proc,/proc/meminfo,_mem_kernel_MB_average,Memory Used by Kernel (mem.kernel),MB,1,1
+proc,/proc/meminfo,_mem_writeback_MB_average,Writeback Memory (mem.writeback),MB,1,1
+proc,/proc/meminfo,_mem_committed_MB_average,Committed (Allocated) Memory (mem.committed),MB,1,1
+proc,/proc/meminfo,_mem_slab_MB_average,Reclaimable Kernel Memory (mem.slab),MB,1,1
+proc,/proc/meminfo,_system_ram_MB_average,System RAM (system.ram),MB,1,1
+proc,/proc/net/snmp6,_ipv6_icmprouter_messages_persec_average,IPv6 Router Messages (ipv6.icmprouter),messages/s,0,1
+proc,/proc/net/snmp6,_ipv6_mcastpkts_packets_persec_average,IPv6 Multicast Packets (ipv6.mcastpkts),packets/s,0,1
+proc,/proc/net/snmp6,_ipv6_packets_packets_persec_average,IPv6 Packets (ipv6.packets),packets/s,0,1
+proc,/proc/net/snmp6,_ipv6_udperrors_events_persec_average,IPv6 UDP Errors (ipv6.udperrors),events/s,0,1
+proc,/proc/net/snmp6,_system_ipv6_kilobits_persec_average,IPv6 Bandwidth (system.ipv6),kilobits/s,0,1
+proc,/proc/net/snmp6,_ipv6_mcast_kilobits_persec_average,IPv6 Multicast Bandwidth (ipv6.mcast),kilobits/s,0,1
+proc,/proc/net/snmp6,_ipv6_ect_packets_persec_average,IPv6 ECT Packets (ipv6.ect),packets/s,0,1
+proc,/proc/net/snmp6,_ipv6_icmpneighbor_messages_persec_average,IPv6 Neighbor Messages (ipv6.icmpneighbor),messages/s,0,1
+proc,/proc/net/snmp6,_ipv6_udppackets_packets_persec_average,IPv6 UDP Packets (ipv6.udppackets),packets/s,0,1
+proc,/proc/net/snmp6,_ipv6_icmpmldv2_reports_persec_average,IPv6 ICMP MLDv2 Reports (ipv6.icmpmldv2),reports/s,0,1
+proc,/proc/net/snmp6,_ipv6_icmptypes_messages_persec_average,IPv6 ICMP Types (ipv6.icmptypes),messages/s,0,1
+proc,/proc/net/snmp6,_ipv6_icmp_messages_persec_average,IPv6 ICMP Messages (ipv6.icmp),messages/s,0,1
+apps,,_groups_lreads_kilobytes_persec_average,User Groups Disk Logical Reads (groups.lreads),kilobytes/s,0,1
+apps,,_users_mem_MB_average,Users Real Memory (w/o shared) (users.mem),MB,0,1
+apps,,_apps_major_faults_page_faults_persec_average,Apps Major Page Faults (swap read) (apps.major_faults),page faults/s,0,1
+apps,,_apps_pwrites_kilobytes_persec_average,Apps Disk Writes (apps.pwrites),kilobytes/s,0,1
+apps,,_groups_mem_MB_average,User Groups Real Memory (w/o shared) (groups.mem),MB,0,1
+apps,,_groups_lwrites_kilobytes_persec_average,User Groups I/O Logical Writes (groups.lwrites),kilobytes/s,0,1
+apps,,_users_lwrites_kilobytes_persec_average,Users I/O Logical Writes (users.lwrites),kilobytes/s,0,1
+apps,,_apps_vmem_MB_average,Apps Virtual Memory Size (apps.vmem),MB,0,1
+apps,,_apps_swap_MB_average,Apps Swap Memory (apps.swap),MB,0,1
+apps,,_apps_cpu_cpu_time___average,Apps CPU Time (400% = 4 cores) (apps.cpu),cpu time %,0,1
+apps,,_apps_sockets_open_sockets_average,Apps Open Sockets (apps.sockets),open sockets,0,1
+apps,,_users_threads_threads_average,Users Threads (users.threads),threads,0,1
+apps,,_users_lreads_kilobytes_persec_average,Users Disk Logical Reads (users.lreads),kilobytes/s,0,1
+apps,,_groups_sockets_open_sockets_average,User Groups Open Sockets (groups.sockets),open sockets,0,1
+apps,,_groups_minor_faults_page_faults_persec_average,User Groups Minor Page Faults (groups.minor_faults),page faults/s,0,1
+apps,,_netdata_apps_fix_percentage_average,Apps Plugin Normalization Ratios (netdata.apps_fix),percentage,0,1
+apps,,_groups_cpu_cpu_time___average,User Groups CPU Time (400% = 4 cores) (groups.cpu),cpu time %,0,1
+apps,,_users_minor_faults_page_faults_persec_average,Users Minor Page Faults (users.minor_faults),page faults/s,0,1
+apps,,_groups_threads_threads_average,User Groups Threads (groups.threads),threads,0,1
+apps,,_groups_cpu_user_cpu_time___average,User Groups CPU User Time (400% = 4 cores) (groups.cpu_user),cpu time %,0,1
+apps,,_netdata_apps_sizes_files_persec_average,Apps Plugin Files (netdata.apps_sizes),files/s,0,1
+apps,,_users_files_open_files_average,Users Open Files (users.files),open files,0,1
+apps,,_groups_processes_processes_average,User Groups Processes (groups.processes),processes,0,1
+apps,,_users_processes_processes_average,Users Processes (users.processes),processes,0,1
+apps,,_users_cpu_cpu_time___average,Users CPU Time (400% = 4 cores) (users.cpu),cpu time %,0,1
+apps,,_apps_preads_kilobytes_persec_average,Apps Disk Reads (apps.preads),kilobytes/s,0,1
+apps,,_users_preads_kilobytes_persec_average,Users Disk Reads (users.preads),kilobytes/s,0,1
+apps,,_apps_mem_MB_average,Apps Real Memory (w/o shared) (apps.mem),MB,0,1
+apps,,_users_cpu_system_cpu_time___average,Users CPU System Time (400% = 4 cores) (users.cpu_system),cpu time %,0,1
+apps,,_groups_major_faults_page_faults_persec_average,User Groups Major Page Faults (swap read) (groups.major_faults),page faults/s,0,1
+apps,,_apps_lwrites_kilobytes_persec_average,Apps I/O Logical Writes (apps.lwrites),kilobytes/s,0,1
+apps,,_users_major_faults_page_faults_persec_average,Users Major Page Faults (swap read) (users.major_faults),page faults/s,0,1
+apps,,_users_pwrites_kilobytes_persec_average,Users Disk Writes (users.pwrites),kilobytes/s,0,1
+apps,,_netdata_apps_children_fix_percentage_average,Apps Plugin Exited Children Normalization Ratios (netdata.apps_children_fix),percentage,0,1
+apps,,_netdata_apps_cpu_milliseconds_persec_average,Apps Plugin CPU (netdata.apps_cpu),milliseconds/s,0,1
+apps,,_groups_pipes_open_pipes_average,User Groups Pipes (groups.pipes),open pipes,0,1
+apps,,_apps_files_open_files_average,Apps Open Files (apps.files),open files,0,1
+apps,,_apps_cpu_system_cpu_time___average,Apps CPU System Time (400% = 4 cores) (apps.cpu_system),cpu time %,0,1
+apps,,_users_vmem_MB_average,Users Virtual Memory Size (users.vmem),MB,0,1
+apps,,_groups_files_open_files_average,User Groups Open Files (groups.files),open files,0,1
+apps,,_apps_threads_threads_average,Apps Threads (apps.threads),threads,0,1
+apps,,_users_swap_MB_average,Users Swap Memory (users.swap),MB,0,1
+apps,,_users_sockets_open_sockets_average,Users Open Sockets (users.sockets),open sockets,0,1
+apps,,_apps_cpu_user_cpu_time___average,Apps CPU User Time (400% = 4 cores) (apps.cpu_user),cpu time %,0,1
+apps,,_apps_processes_processes_average,Apps Processes (apps.processes),processes,0,1
+apps,,_users_cpu_user_cpu_time___average,Users CPU User Time (400% = 4 cores) (users.cpu_user),cpu time %,0,1
+apps,,_groups_pwrites_kilobytes_persec_average,User Groups Disk Writes (groups.pwrites),kilobytes/s,0,1
+apps,,_apps_lreads_kilobytes_persec_average,Apps Disk Logical Reads (apps.lreads),kilobytes/s,0,1
+apps,,_groups_cpu_system_cpu_time___average,User Groups CPU System Time (400% = 4 cores) (groups.cpu_system),cpu time %,0,1
+apps,,_users_pipes_open_pipes_average,Users Pipes (users.pipes),open pipes,0,1
+apps,,_groups_vmem_MB_average,User Groups Virtual Memory Size (groups.vmem),MB,0,1
+apps,,_groups_swap_MB_average,User Groups Swap Memory (groups.swap),MB,0,1
+apps,,_groups_preads_kilobytes_persec_average,User Groups Disk Reads (groups.preads),kilobytes/s,0,1
+apps,,_apps_minor_faults_page_faults_persec_average,Apps Minor Page Faults (apps.minor_faults),page faults/s,0,1
+apps,,_apps_pipes_open_pipes_average,Apps Pipes (apps.pipes),open pipes,0,1
+proc,/proc/net/softnet_stat,_cpu_softnet_stat_events_persec_average,CPU1 softnet_stat (cpu.cpu1_softnet_stat),events/s,0,1
+proc,/proc/net/softnet_stat,_system_softnet_stat_events_persec_average,System softnet_stat (system.softnet_stat),events/s,0,1
+charts.d,,_netdata_plugin_charts_milliseconds___run_average,Execution time for example plugin (netdata.plugin_chartsd_example),milliseconds / run,0,1
+charts.d,,_random___of_random_numbers_average,Random Numbers Stacked Chart (example.random),% of random numbers,0,1
+charts.d,,_random_random_number_average,A random number (example.random2),random number,0,1
+idlejitter,,_system_idlejitter_microseconds_lost_persec_average,CPU Idle Jitter (system.idlejitter),microseconds lost/s,0,1
+proc,/proc/uptime,_system_uptime_seconds_average,System Uptime (system.uptime),seconds,0,1
+proc,/proc/net/stat/synproxy,_netfilter_synproxy_cookies_cookies_persec_average,SYNPROXY TCP Cookies (netfilter.synproxy_cookies),cookies/s,0,1
+proc,/proc/net/stat/synproxy,_netfilter_synproxy_syn_received_SYN_persec_average,SYNPROXY SYN Packets received (netfilter.synproxy_syn_received),SYN/s,0,1
+proc,/proc/net/stat/synproxy,_netfilter_synproxy_entries_entries_average,SYNPROXY Entries Used (netfilter.synproxy_entries),entries,0,1
+proc,/proc/net/stat/synproxy,_netfilter_synproxy_conn_reopened_connections_persec_average,SYNPROXY Connections Reopened (netfilter.synproxy_conn_reopened),connections/s,0,1
+proc,/proc/sys/kernel/random/entropy_avail,_system_entropy_entropy_average,Available Entropy (system.entropy),entropy,0,1
+proc,/proc/loadavg,_system_active_processes_processes_average,System Active Processes (system.active_processes),processes,0,1
+proc,/proc/loadavg,_system_load_load_average,System Load Average (system.load),load,0,1

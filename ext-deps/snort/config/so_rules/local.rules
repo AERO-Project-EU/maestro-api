@@ -1,0 +1,3 @@
+alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"Pinging...";sid:1000004;)
+
+#alert ip any any -> any any (msg:"http requesting...";sid:1000005;)

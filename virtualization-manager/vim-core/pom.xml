@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>eu.orchestrator.virtualization-manager</groupId>
+    <artifactId>virtualization-manager</artifactId>
+    <version>1.6.0.RELEASE</version>
+  </parent>
+
+  <artifactId>vim-core</artifactId>
+  <name>Vim Core</name>
+
+  <dependencies>
+
+    <!-- provider interfaces -->
+    <dependency>
+      <groupId>eu.orchestrator.virtualization-manager</groupId>
+      <artifactId>spi</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <!-- openstack implementation -->
+    <dependency>
+      <groupId>eu.orchestrator.virtualization-manager.provider-adapter</groupId>
+      <artifactId>openstack</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <!-- amazon implementation -->
+    <dependency>
+      <groupId>eu.orchestrator.virtualization-manager.provider-adapter</groupId>
+      <artifactId>amazon</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <!-- google cloud implementation -->
+    <dependency>
+      <groupId>eu.orchestrator.virtualization-manager.provider-adapter</groupId>
+      <artifactId>google-cloud-compute</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <!-- iot implementation -->
+    <dependency>
+      <groupId>eu.orchestrator.virtualization-manager.provider-adapter</groupId>
+      <artifactId>iot</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <!-- Transfer -->
+    <dependency>
+      <groupId>eu.orchestrator</groupId>
+      <artifactId>transfer</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <!-- spring-boot -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <!-- Testing -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+
+    <!-- JSON -->
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <fork>true</fork>
+          <addResources>true</addResources>
+          <mainClass>eu.orchestrator.virtualization.manager.core.Application</mainClass>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

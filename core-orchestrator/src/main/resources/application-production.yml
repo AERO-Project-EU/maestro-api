@@ -1,0 +1,83 @@
+server.port: 8090
+
+eu.project: ${EU_PROJECT}
+
+#Consul Master url
+consul.url: ${CONSUL_URL}
+consul.ipv6: ${CONSUL_IPV6}
+consul.port: ${CONSUL_PORT}
+consul.ipv6Enabled: ${CONSUL_IPV6_ENABLED}
+
+#Virtualization Manager
+vim.url: ${VIM_URL}
+vim.port: ${VIM_PORT}
+
+#Backend
+backend.url: ${BACKEND_URL}
+backend.port: ${BACKEND_PORT}
+
+#Kafka configuration
+kafka.url: ${KAFKA_URL}
+kafka.port: ${KAFKA_PORT}
+kafka.reportStatusTopic: ""
+kafka.backendRequest: ""
+kafka.policyEngineTopic: ""
+kafka.group: ""
+kafka.securityResults: ""
+kafka.socUrl: ${KAFKA_SOC_URL}
+
+ubidell.image.id: ""
+ubidell.flavor.id: ""
+ubidell.network.id: ""
+ubidell.key.id: ""
+ubidell.nexus.ip: ""
+
+#dell maestro master
+relay.ipv4: ${RELAY_IPV4}
+relay.port: ${RELAY_PORT}
+relay.login: ${RELAY_LOGIN}
+relay.password: ${RELAY_PASSWORD}
+relay.publicKey: ${RELAY_PUBLIC_KEY}
+relay.peerName: ""
+relay.ipv6: ${RELAY_IPV6}
+relay.cluster: ${RELAY_CLUSTER}
+
+#Amazon IDs
+amazon.flavor.id: ""
+amazon.image.id: ""
+
+#Intrusition Detection System
+ids.registry: ${IDS_REGISTRY}
+ids.image: ${IDS_IMAGE}
+ids.username: ${IDS_USERNAME}
+ids.password: ${IDS_PASSWORD}
+ids.config.url: ${IDS_CONFIG_URL}
+ids.config.username: ${IDS_CONFIG_USERNAME}
+ids.config.password: ${IDS_CONFIG_PASSWORD}
+
+#Agent
+agent.url: ${AGENT_URL}
+agent.token: ${AGENT_TOKEN}
+
+worker.username: ${WORKER_USERNAME:ubuntu}
+worker.password: ${WORKER_PASSWORD:}
+network.additional.routes: ${NETWORK_ADDITIONAL_ROUTES:}
+cjdns.init.script.url: ${CJDNS_INIT_SCRIPT_URL}
+
+nfs.server.ip: ${NFS_SERVER_IP}
+prometheus.url: ${PROMETHEUS_URL}
+monitoring.delay.enabled: ${MONITORING_DELAY_ENABLED}
+
+soc.manager.ip: ${SOC_MANAGER_IP}
+soc.manager.port: ${SOC_MANAGER_PORT}
+soc.manager.username: ${SOC_MANAGER_USERNAME}
+soc.manager.password: ${SOC_MANAGER_PASSWORD}
+soc.manager.private.ip: ${SOC_MANAGER_PRIVATE_IP}
+soc.agent.url: ${SOC_AGENT_URL}
+soc.auditd.enabled: ${SOC_AUDITD_ENABLED}
+
+# Logging
+logging.config: classpath:log4j2-production.yml
+
+# Shared secret with the agent (AGENT_ENCRYPTION_KEY); must match on both sides.
+key.token: ${KEY_TOKEN}

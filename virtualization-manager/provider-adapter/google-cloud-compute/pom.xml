@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>eu.orchestrator.virtualization-manager.provider-adapter</groupId>
+    <artifactId>provider-adapter</artifactId>
+    <version>1.6.0.RELEASE</version>
+  </parent>
+
+  <artifactId>google-cloud-compute</artifactId>
+  <name>Google Cloud Compute</name>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>eu.orchestrator.virtualization-manager</groupId>
+      <artifactId>spi</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.apis</groupId>
+      <artifactId>google-api-services-compute</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.jclouds</groupId>
+      <artifactId>jclouds-compute</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.jclouds.provider</groupId>
+      <artifactId>google-compute-engine</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.jclouds.common</groupId>
+      <artifactId>googlecloud</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.jclouds</groupId>
+      <artifactId>jclouds-core</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
