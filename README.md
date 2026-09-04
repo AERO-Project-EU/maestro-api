@@ -1,10 +1,10 @@
 <div align="center">
 
 ```
-    __  ______   _________________  ____
-    /  |/  / _ | / __/ __/_  __/ _ \/ __ \
-   / /|_/ / __ |/ _/_\ \  / / / , _/ /_/ /
- /_/  /_/_/ |_/___/___/ /_/ /_/|_|\____/
+        __  ______   _________________  ____
+        /  |/  / _ | / __/ __/_  __/ _ \/ __ \
+       / /|_/ / __ |/ _/_\ \  / / / , _/ /_/ /
+     /_/  /_/_/ |_/___/___/ /_/ /_/|_|\____/
 ```
 
 **A novel reconfigurable by design highly distributed applications procurement paradigm over programmable infrastructure**
