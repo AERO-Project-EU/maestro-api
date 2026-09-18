@@ -132,3 +132,8 @@ Copyright 2017-2026 Ubitech ltd (www.ubitech.eu).
 
 Licensed under the Apache License, Version 2.0. See [LICENSE.md](LICENSE.md) for the full text,
 or obtain a copy at http://www.apache.org/licenses/LICENSE-2.0.
+
+## Acknowledgement
+
+This work has been funded by the European Union under Horizon Europe grant 101092850
+(project AERO).
